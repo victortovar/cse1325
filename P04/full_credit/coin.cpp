@@ -1,6 +1,7 @@
 #include<iostream>
 #include<string>
 #include "coin.h"
+#include "logger.h"
 
 Coin::Coin(Coin_size size, Year year)
      :_size{size},_year{year}, _notes{nullptr}{}
