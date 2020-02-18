@@ -4,14 +4,16 @@
 #include "logger.h"
 
 Coin::Coin(Coin_size size, Year year)
-     :_size{size},_year{year}, _notes{nullptr}{}
+     :_size{size},_year{year}, _notes{nullptr}{LOG("Coin::Coin");}
 Coin::Coin(const Coin &rhs){
    _size=rhs._size; _year=rhs._year;_notes=new std::string();
    _notes->assign(*(rhs._notes));
+   LOG("Coin::Coin copy constructor");
 }
-Coin::~Coin(){delete _notes;}
+Coin::~Coin(){LOG("Coin::~Coin");delete _notes;}
 Coin& Coin::operator=(const Coin &rhs) {
    _size=rhs._size; _year=rhs._year;
+   LOG("Coin::operator=");
    if(this != &rhs) {
       _notes = new std::string;
       _notes->assign(*(rhs._notes));

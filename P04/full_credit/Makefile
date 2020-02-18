@@ -5,6 +5,11 @@ all: coin
 debug: CXXFLAGS += -g
 debug:coin
 
+logger: logger.h
+	$(CXX) $(CXXFLAGS) -DLOGGER test.cpp -c -o test.o
+	$(CXX) $(CXXFLAGS) -DLOGGER coin.cpp -c -o coin.o
+	$(CXX) $(CXXFLAGS) -DLOGGER test.o coin.o -o coin
+
 rebuild: clean coin
 
 coin: test.o coin.o *.h
