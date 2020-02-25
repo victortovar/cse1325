@@ -35,12 +35,12 @@ int main(){
 
     if(total!=0){
       std::cout << "Current Order\n----------" << std::endl;
-      if(index<taxfree.size()) total = total + taxfree[index]._cost*quant;
+     // if(index<taxfree.size()) total = total + taxfree[index]._cost*quant;
 
 }
 }
 
 }catch(std::runtime_error e){}
-  std::cout << "Hello" << std::endl;
+
   return 0;
 }
