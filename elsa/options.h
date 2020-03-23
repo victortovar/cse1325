@@ -8,9 +8,10 @@ class Options{
       double _cost;
    public:
       Options(std::string name, double cost);
-      virtual ~Options();
+      ~Options();
       double cost();
       std::string to_string();
+      friend std::ostream& operator<<(std::ostream& ost, const Options& option);
 };
 
 

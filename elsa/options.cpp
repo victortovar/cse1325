@@ -9,3 +9,7 @@ double Options::cost(){
 std::string Options::to_string(){
 
 }
+std::ostream& operator<<(std::ostream& ost, const Options& option){
+
+   return ost;
+}
