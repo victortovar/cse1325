@@ -10,6 +10,6 @@ double Desktop::price() {
    return sum;
 }
 std::ostream& operator<<(std::ostream& ost, const Desktop& desktop){
-
+   std::cout << desktop << std::endl;
    return ost;
 }
