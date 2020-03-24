@@ -1,6 +1,7 @@
 #ifndef __OPTIONS_H
 #define __OPTIONS_H
 #include<string>
+#include<iostream>
 
 class Options{
    protected:

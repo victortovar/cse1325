@@ -1,5 +1,7 @@
 #ifndef __order_h
 #define __order_h
+#include "customer.h"
+#include "desktop.h"
 
 class Order{
    private:
@@ -10,6 +12,7 @@ class Order{
       ~Order();
       int add_product(Desktop& desktop);
       double price();
+      friend std::ostream& operator<<(std::ostream& ost, const Order& order);
 };
 
 
