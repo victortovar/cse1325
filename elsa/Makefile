@@ -8,7 +8,7 @@ debug: store
 
 rebuild: clean main
 
-store: customer.o options.o desktop.o order.o store.o *.h
+store: customer.o options.o desktop.o order.o store.o main.o *.h
 	$(CXX) $(CXXFLAGS) customer.o options.o desktop.o order.o store.o -o store
 
 customer.o: customer.cpp *.h
@@ -25,6 +25,8 @@ order.o: order.cpp *.h
 
 store.o: store.cpp *.h
 	$(CXX) $(CXXFLAGS) -c store.cpp -o store.o
+main.o: main.cpp *.h
+	$(CXX) $(CXXFLAGS) -c main.cpp -o main.o
 
 customer.gch: customer.h
 	$(CXX) $(CXXFLAGS) -c customer.h -o customer.gch
