@@ -21,7 +21,7 @@ Options& Store::option(int index){
 int Store::new_desktop(){
    desktops.push_back(Desktop());
    return desktops.size()-1;
-}
+}/*
 void Store::add_option(int option, int desktop){
    desktops.emplace(desktop, options[option]);
 }/*
