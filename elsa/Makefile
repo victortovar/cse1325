@@ -1,5 +1,6 @@
 
 CXXFLAGS = --std=c++17
+GTKFLAGS = /usr/bin/pkg-config gtkmm-3.8 --cflags --libs
 
 all: store
 
