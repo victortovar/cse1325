@@ -12,6 +12,8 @@ class Options{
       ~Options();
       double cost();
       std::string to_string();
+			void save(std::ostream& ost);
+			Options(std::istream& ist);
       friend std::ostream& operator<<(std::ostream& ost, const Options& option);
 };
 

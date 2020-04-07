@@ -12,6 +12,8 @@ class Order{
       ~Order();
       int add_product(Desktop& desktop);
       double price();
+      Order(std::istream& ist);
+      void save(std::ostream& ost);
       friend std::ostream& operator<<(std::ostream& ost, const Order& order);
 };
 

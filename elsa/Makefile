@@ -1,48 +1,37 @@
 
-CXXFLAGS = --std=c++17
-GTKFLAGS = /usr/bin/pkg-config gtkmm-3.8 --cflags --libs
-
-all: store
+CXXFLAGS += --std=c++17
+GTKFLAGS = `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
 
 debug: CXXFLAGS += -g
-debug: store
 
 rebuild: clean main
 
-store: customer.o options.o desktop.o order.o store.o main.o *.h
-	$(CXX) $(CXXFLAGS) customer.o options.o desktop.o order.o store.o -o store
+elsa: customer.o options.o desktop.o order.o store.o main.o mainwin.o entrydialog.o *.h
+	$(CXX) $(CXXFLAGS) customer.o options.o desktop.o order.o store.o main.o mainwin.o entrydialog.o $(GTKFLAGS) -o elsa
 
 customer.o: customer.cpp *.h
-	$(CXX) $(CXXFLAGS) -c customer.cpp -o customer.o
+	$(CXX) $(CXXFLAGS) -c customer.cpp
 
 options.o: options.cpp *.h
-	$(CXX) $(CXXFLAGS) -c options.cpp -o options.o
+	$(CXX) $(CXXFLAGS) -c options.cpp
 
 desktop.o: desktop.cpp *.h
-	$(CXX) $(CXXFLAGS) -c desktop.cpp -o desktop.o
+	$(CXX) $(CXXFLAGS) -c desktop.cpp
 
 order.o: order.cpp *.h
-	$(CXX) $(CXXFLAGS) -c order.cpp -o order.o
+	$(CXX) $(CXXFLAGS) -c order.cpp
 
 store.o: store.cpp *.h
-	$(CXX) $(CXXFLAGS) -c store.cpp -o store.o
+	$(CXX) $(CXXFLAGS) -c store.cpp 
+
 main.o: main.cpp *.h
-	$(CXX) $(CXXFLAGS) -c main.cpp -o main.o
+	$(CXX) $(CXXFLAGS) -c main.cpp $(GTKFLAGS)
 
-customer.gch: customer.h
-	$(CXX) $(CXXFLAGS) -c customer.h -o customer.gch
+mainwin.o: mainwin.cpp *.h
+	$(CXX) $(CXXFLAGS) -c mainwin.cpp $(GTKFLAGS)
 
-options.gch: options.h
-	$(CXX) $(CXXFLAGS) -c options.h -o options.gch
-
-desktop.gch: desktop.h
-	$(CXX) $(CXXFLAGS) -c desktop.h -o desktop.gch
-
-order.gch: order.h
-	$(CXX) $(CXXFLAGS) -c order.h -o order.gch
-
-store.gch: store.h
-	$(CXX) $(CXXFLAGS) -c store.h -o store.gch
+entrydialog.o: entrydialog.cpp *.h
+	$(CXX) $(CXXFLAGS) -c entrydialog.cpp $(GTKFLAGS)
 
 clean:
-	-rm -f *.o *.gch a.out store
+	-rm -f *.o *.gch elsa
