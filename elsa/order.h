@@ -9,9 +9,9 @@ class Order{
       std::vector<Desktop *> _products;
    public:
       Order(Customer& customer);
-      ~Order();
+      virtual ~Order();
       int add_product(Desktop& desktop);
-      double price();
+      double price() const;
       Order(std::istream& ist);
       void save(std::ostream& ost);
       friend std::ostream& operator<<(std::ostream& ost, const Order& order);

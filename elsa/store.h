@@ -3,6 +3,8 @@
 #include<vector>
 #include "customer.h"
 #include "order.h"
+#include "desktop.h"
+#include "options.h"
 
 class Store{
    private:

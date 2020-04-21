@@ -1,5 +1,46 @@
 #include "store.h"
 
+Store::Store() {}
+Store::Store(std::istream& ist){
+  std::string str;
+  int csize;
+  std::getline(ist, str);
+
+    ist >> csize; ist.ignore(32767, '\n');
+    while(csize--) customers.push_back(Customer{ist});
+    if(!ist) throw std::runtime_error{"Bad Customer Data"};
+
+    ist >> csize; ist.ignore(32767, '\n');
+    while(csize--) options.push_back(new Options{ist});
+    if(!ist) throw std::runtime_error{"Bad Options Data"};
+
+    ist >> csize; ist.ignore(32767, '\n');
+    while(csize--) desktops.push_back(Desktop{ist});
+    if(!ist) throw std::runtime_error{"Bad Product Data"};
+
+    ist >> csize; ist.ignore(32767, '\n');
+    while(csize--) orders.push_back(Order{ist});
+    if(!ist) throw std::runtime_error{"Bad Order Data"};
+}
+
+void Store::save(std::ostream& ost) {
+
+  //  ost << ELSA_COOKIE << "\n";
+    //ost << ELSA_FILE_VERSION << "\n";
+
+    ost << customers.size() << '\n';
+    for(auto c : customers) c.save(ost);
+
+    ost << options.size() << '\n';
+    for(auto o : options) o->save(ost);
+
+    ost << desktops.size() << '\n';
+    for(auto d : desktops) d.save(ost);
+
+    ost << orders.size() << '\n';
+    for(auto o : orders) o.save(ost);
+}
+
 void Store::add_customer(Customer& customer){
    customers.push_back(customer);
 }
