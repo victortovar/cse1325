@@ -22,7 +22,7 @@ Cart& Cart::operator=(const Cart& cart){
   return *this;
 }
 void Cart::add_item(Item& item){
-//  item = new Item(_name, _price);
+
   items.push_back(&item);
 }
 double Cart::cost(){

@@ -11,7 +11,11 @@ std::ostream& operator<<(std::ostream& ost, const Item& item){
   return ost;
 }
 std::istream& operator>>(std::istream& ist, Item& item){
-  
+  std::string s, name; double price;
+  ist >> s;
+  std::size_t last = s.find_last_of('\n', s.size()-1);
+  name = s.substr(0, last);
+  price = stod(s.substr(last+1));
   return ist;
 }
 
