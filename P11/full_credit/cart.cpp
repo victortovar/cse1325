@@ -4,7 +4,7 @@
 Cart::Cart(std::string customer):
   _customer{customer}{}
 Cart::~Cart(){
-//  for(auto item: _items) delete *item;
+  for(auto i: items) delete i;
 }
 
 Cart::Cart(const Cart& cart){

@@ -1,5 +1,7 @@
 CXXFLAGS = --std=c++17
 
+debug: CXXFLAGS += -g
+
 store: main.o cart.o item.o *.h
 	$(CXX) $(CXXFLAGS) main.o cart.o item.o -o store
 main.o: main.cpp *.h
