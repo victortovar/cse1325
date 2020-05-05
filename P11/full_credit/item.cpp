@@ -16,6 +16,7 @@ std::istream& operator>>(std::istream& ist, Item& item){
   std::size_t last = s.find_last_of('\n', s.size()-1);
   name = s.substr(0, last);
   price = stod(s.substr(last+1));
+  item._name = name; item._price = price;
   return ist;
 }
 
